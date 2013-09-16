@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+	      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	      xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	      version="2.5">
+
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        	<param-value>
+        		/WEB-INF/spring-config.xml
+				/WEB-INF/spring-security-config.xml
+			</param-value>
+    </context-param>
+
+	<!-- context-param>
+		<param-name>javax.servlet.jsp.jstl.fmt.LocalizationContext</param-name>
+		<param-value>/WEB-INF/classes/messages_en_GB.properties</param-value>
+	</context-param-->
+
+<!-- Servlets -->
+
+	<servlet>
+		  <servlet-name>context</servlet-name>
+		  <servlet-class>
+			org.springframework.web.context.ContextLoaderServlet
+		  </servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+     <servlet>
+          <servlet-name>frontController</servlet-name>
+          <servlet-class>
+               org.springframework.web.servlet.DispatcherServlet
+          </servlet-class>
+          <load-on-startup>1</load-on-startup>
+     </servlet>
+	
+	<servlet>
+	  <servlet-name>dwr-invoker</servlet-name>
+	  <servlet-class>org.directwebremoting.servlet.DwrServlet</servlet-class>
+	  <init-param>
+	     <param-name>debug</param-name>
+	     <param-value>true</param-value>
+	  </init-param>
+	</servlet>
+
+	<servlet>
+	  <servlet-name>dwr</servlet-name>
+	  <servlet-class>org.directwebremoting.spring.DwrSpringServlet</servlet-class>
+	  <init-param>
+	    <param-name>debug</param-name>
+	    <param-value>true</param-value>
+	  </init-param>
+	</servlet>
+
+<!-- Filters  -->
+
+	<filter>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+
+<!-- Filter Mappings -->
+
+	<filter-mapping>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+    <filter-mapping>
+      <filter-name>springSecurityFilterChain</filter-name>
+      <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+<!-- Servlet Mappings -->
+
+	<!-- servlet-mapping>
+	  <servlet-name>dwr-invoker</servlet-name>
+	  <url-pattern>/dwr/*</url-pattern>
+	</servlet-mapping-->
+     
+	<servlet-mapping>
+		<servlet-name>frontController</servlet-name>
+        <url-pattern>*.htm</url-pattern>
+	</servlet-mapping>
+     
+	<servlet-mapping>
+		<servlet-name>dwr</servlet-name>
+		<url-pattern>/dwr/*</url-pattern>
+	 </servlet-mapping>
+     
+<!-- error pages -->
+
+	<!-- error-page>
+	    <error-code>500</error-code>
+	    <location>/WEB-INF/jsp/error/error.jsp</location>
+	</error-page>
+
+	<error-page>
+	    <error-code>404</error-code>
+	    <location>/WEB-INF/jsp/error/error.jsp</location>
+	</error-page-->
+
+     
+</web-app>
+	

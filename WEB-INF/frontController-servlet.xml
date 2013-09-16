@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+  <beans>
+	
+	<bean id="frontController" class="com.handicraft.controller.FrontController">
+		<property name="service" ref="productCategoryService" />
+	</bean>
+	
+	<bean id="cartController" class="com.handicraft.controller.CartController">
+		<property name="methodNameResolver" ref="paramResolver" />
+		<property name="helper" ref="cartHelper" />
+	</bean>
+
+	<bean id="redirectController" class="com.handicraft.controller.RedirectController">
+	</bean>
+
+
+	<bean id="inquiryController" class="com.handicraft.controller.InquiryController">
+		<property name="methodNameResolver" ref="paramResolver" />
+	</bean>
+
+	<bean id="categoryController" class="com.handicraft.controller.CategoryController">
+		<property name="methodNameResolver" ref="paramResolver" />
+		<property name="service" ref="productCategoryService" />
+	</bean>
+
+	<bean id="productController" class="com.handicraft.controller.ProductController">
+		<property name="methodNameResolver" ref="paramResolver" />
+		<property name="service" ref="productCategoryService" />
+		
+	</bean>
+
+	<bean id="userController" class="com.handicraft.controller.UserController">
+		<property name="methodNameResolver" ref="paramResolver" />
+		<property name="userBiz" ref="userBiz" />
+	</bean>
+
+	<bean id="photoController" class="com.handicraft.controller.PhotoController">
+		<property name="methodNameResolver" ref="paramResolver" />
+	</bean>
+	
+<!-- USER -->
+	<bean id="userOrderController" class="com.handicraft.controller.secure.user.UserOrderManagerController">
+		<property name="methodNameResolver" ref="paramResolver" />
+		<property name="orderService" ref="orderService" />
+		<property name="cartHelper" ref="cartHelper" />
+		
+	</bean>
+
+<!-- admins  -->
+
+	<bean id="productManagerController" class="com.handicraft.controller.secure.ProductManagerController">
+		<property name="methodNameResolver" ref="paramResolver" />
+		<property name="genericService" ref="genericService" />
+		
+	</bean>
+
+	<bean id="orderManagerController" class="com.handicraft.controller.secure.OrderManagerController">
+		<property name="methodNameResolver" ref="paramResolver" />
+		<property name="orderService" ref="orderService" />
+	</bean>
+
+	<bean id="photoManagerController" class="com.handicraft.controller.secure.PhotoManagerController">
+		<property name="methodNameResolver" ref="paramResolver" />
+	</bean>
+
+<!-- for dwr -->
+
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/engine.js">dwrController</prop>
+				<prop key="/util.js">dwrController</prop>
+				<prop key="/interface/**">dwrController</prop>
+				<prop key="/call/**">dwrController</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="urlMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="urlMap">
+			<map>
+				<entry key="/front.htm">
+					<ref bean="frontController" />
+				</entry>
+				<entry key="/inquiry.htm">
+					<ref bean="inquiryController" />
+				</entry>
+				<entry key="/redirect.htm">
+					<ref bean="redirectController" />
+				</entry>
+				<entry key="/product.htm">
+					<ref bean="productController" />
+				</entry>
+				<entry key="/category.htm">
+					<ref bean="categoryController" />
+				</entry>
+				<entry key="/order.htm">
+					<ref bean="userOrderController" />
+				</entry>
+				<entry key="/cart.htm">
+					<ref bean="cartController" />
+				</entry>
+				<entry key="/user.htm">
+					<ref bean="userController" />
+				</entry>
+				<entry key="/productManager.htm">
+					<ref bean="productManagerController" />
+				</entry>
+				<entry key="/orderManager.htm">
+					<ref bean="orderManagerController" />
+				</entry>
+				<entry key="/photoManager.htm">
+					<ref bean="photoManagerController" />
+				</entry>
+				<entry key="/photo.htm">
+					<ref bean="photoController" />
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- one of the properties available; the maximum file size in bytes -->
+		<property name="maxUploadSize" value="1000000" />
+	</bean>
+
+	<bean id="paramResolver"
+		class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+		<property name="paramName" value="method" />
+	</bean>
+    
+    <bean id="handlerExceptionResolver" class="com.handicraft.controller.CustomExceptionResolver">
+    </bean>
+
+	<!-- bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass">
+			<value>org.springframework.web.servlet.view.JstlView</value>
+		</property>
+		<property name="prefix">
+			<value>/WEB-INF/jsp/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+		<property name="contentType">
+			<value>text/html;charset=UTF-8</value>
+		</property>
+	</bean-->
+	
+
+	
+
+</beans>

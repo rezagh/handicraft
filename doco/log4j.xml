@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+
+	<!-- this is not used -->
+	<appender name="ConsoleAppender" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{dd MMM HH:mm:ss} %-5p [%c] %m%n"/>
+        </layout>
+	</appender>
+	
+	<appender name="roller" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="log/iranozrolling.log" />
+		<param name="Append" value="true"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{dd MMM HH:mm:ss} - %p - %C{1} - %m%n"/>
+		</layout>
+	</appender>
+
+<!-- iran oz -->
+
+	<category name="com.handicraft.controller">
+		<priority value="debug" />
+	</category>
+
+	<category name="com.handicraft.service.impl">
+		<priority value="debug" />
+	</category>
+
+	<category name="com.handicraft.util">
+		<priority value="debug" />
+	</category>
+
+	<category name="com.handicraft.filter">
+		<priority value="debug" />
+	</category>
+
+<!-- kharid -->
+
+	<category name="com.kharid.controller">
+		<priority value="debug" />
+	</category>
+
+	<category name="com.kharid.biz.impl">
+		<priority value="debug" />
+	</category>
+
+	<category name="com.kharid.filter">
+		<priority value="debug" />
+	</category>
+
+	<category name="com.kharid.dwr">
+		<priority value="debug" />
+	</category>
+
+	<category name="com.kharid.util">
+		<priority value="debug" />
+	</category>
+
+<!-- frameworks logs -->
+
+	<category name="org.directwebremoting">
+		<priority value="info" />
+	</category>
+
+	<category name="org.hibernate">
+		<priority value="error" />
+	</category>
+
+	<category name="org.springframework">
+		<priority value="error"/>
+	</category>
+
+
+	<root>
+		<priority value="debug" />
+		<appender-ref ref="ConsoleAppender" />
+	</root>
+</log4j:configuration>

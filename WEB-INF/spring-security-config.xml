@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  old beans:beans xmlns="http://www.springframework.org/schema/security"
+  xmlns:beans="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/security
+           http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+	-->
+
+	<beans:beans xmlns="http://www.springframework.org/schema/security"
+  xmlns:beans="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/security
+           http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+
+
+
+  	<global-method-security secured-annotations="enabled"/>
+ 	
+    <http auto-config="false" entry-point-ref="authenticationProcessingFilterEntryPoint">
+        <intercept-url pattern="/secure/admin/**" access="ROLE_ADMIN"/>
+        <intercept-url pattern="/secure/**" access="ROLE_SUPER_USER,ROLE_ADMIN" />
+        <intercept-url pattern="/user/**" access="ROLE_USER" />
+
+		<!-- secure controllers  -->
+        <intercept-url pattern="/OrderManagerController.htm/**" access="ROLE_SUPER_USER,ROLE_ADMIN" />
+        <intercept-url pattern="/ProductManagerController.htm/**" access="ROLE_SUPER_USER,ROLE_ADMIN" />
+        <intercept-url pattern="/PhotoManagerController.htm/**" access="ROLE_SUPER_USER,ROLE_ADMIN" />
+        <intercept-url pattern="/UserOrderManagerController.htm/**" access="ROLE_SUPER_USER,ROLE_ADMIN" />
+
+
+		<!-- new from the book but seems similar 
+		<intercept-url pattern='/login.htm*' filters='none'/>
+		<intercept-url pattern='/**' access='ROLE_USER' />
+		<form-login login-page='/login.htm' default-target-url='/home.htm' always-use-default-target='true' />
+		 -->
+
+		<form-login 
+			login-page="/redirect.htm?pageId=login" 
+			authentication-failure-url="/redirect.htm?pageId=login" 
+			default-target-url="/user.htm?method=afterLogin"
+			always-use-default-target="false"/>
+
+		<!-- Disable web URI authorization, as we're using <global-method-security> and have @Secured the services layer instead
+        <intercept-url pattern="/listAccounts.html" access="IS_AUTHENTICATED_REMEMBERED" />
+        <intercept-url pattern="/post.html" access="ROLE_TELLER" />
+        -->
+        <!-- intercept-url pattern="/**" access="IS_AUTHENTICATED_ANONYMOUSLYD" /-->
+        
+        <!--
+    			Uncomment to enable X509 client authentication support
+        <x509 /> 
+		-->
+
+        <!-- Uncomment to limit the number of sessions a user can have
+        <concurrent-session-control max-sessions="1" exception-if-maximum-exceeded="true"/>
+		-->		
+
+			
+
+		<logout logout-success-url="/front.htm"/> 
+
+    </http>
+ 
+	<beans:bean id="daoAuthenticationProvider" class="com.handicraft.dao.impl.CustomDaoAuthenticationProvider">
+			<beans:property name="genericDao" ref="genericDao" />
+			<beans:property name="userDetailsService" ref="userBiz"/>
+	</beans:bean>
+	
+	<!-- beans:bean id="providerManager" class="org.springframework.security.authentication.ProviderManager">
+		<beans:property name="providers">
+			<beans:list>
+				<beans:ref local="daoAuthenticationProvider"/>
+			</beans:list>
+		</beans:property>
+	</beans:bean-->
+
+<!-- when we enable this then form submission does not work 	
+	<beans:bean id="authenticationFilter" class="com.handicraft.filter.CustomAuthenticationProcessingFilter">
+		<beans:property name="authenticationManager" ref="authenticationManager"/>
+		<beans:property name="filterProcessesUrl" value="/j_spring_security_check"/>
+	</beans:bean>
+ -->
+	<!-- 
+	<beans:bean id="filterChainProxy" class="org.springframework.security.web.FilterChainProxy">
+		<sec:filter-chain-map path-type="ant">
+			<sec:filter-chain pattern="/webServices/**" filters="
+				securityContextPersistenceFilterWithASCFalse,
+				basicAuthenticationFilter,
+				exceptionTranslationFilter,
+				filterSecurityInterceptor" />
+			<sec:filter-chain pattern="/**" filters="
+				securityContextPersistenceFilterWithASCTrue,
+				formLoginFilter,
+				exceptionTranslationFilter,
+				filterSecurityInterceptor" />
+		</sec:filter-chain-map>
+	</beans:bean>
+	
+	 -->
+	 
+	 
+	<!-- 
+	<beans:bean id ="authenticationProcessingFilter" class="com.handicraft.filter.CustomAuthenticationProcessingFilter">
+		<custom-filter position="FORM_LOGIN_FILTER" ref="myFilter" />
+		<beans:property name="defaultTargetUrl" value="/front.htm" />
+		<beans:property name="authenticationManager" ref="authenticationManager" />
+		<beans:property name="authenticationFailureUrl" value="/redirect.htm?pageId=user/login" />
+		<beans:property name="exceptionMappings">
+            <beans:props>
+                <beans:prop key="org.springframework.security.CredentialsExpiredException">/redirect.htm?pageId=user/login&amp;credexpired=true</beans:prop>
+                <beans:prop key="org.springframework.security.LockedException">/redirect.htm?pageId=user/login&amp;acclocked=true</beans:prop>
+                <beans:prop key="org.springframework.security.DisabledException">/redirect.htm?pageId=user/login&amp;accdisabled=true</beans:prop>
+                <beans:prop key="org.springframework.security.BadCredentialsException">/redirect.htm?pageId=user/login&amp;badcred=true</beans:prop>
+            </beans:props>
+        </beans:property>
+	</beans:bean>
+	 -->
+	 
+	<beans:bean id="authenticationProcessingFilterEntryPoint" class="org.springframework.security.web.authentication.AuthenticationProcessingFilterEntryPoint">
+		<beans:property name="loginFormUrl" value="/redirect.htm?pageId=login" />
+		<beans:property name="forceHttps" value="false" />
+	</beans:bean>
+
+	<!-- authentication-provider user-service-ref="userBiz"/>
+	<authentication-manager alias="authenticationManager"/-->
+	
+	<authentication-manager alias="authenticationManager">
+		<authentication-provider ref="daoAuthenticationProvider"/>
+	</authentication-manager>
+
+</beans:beans>

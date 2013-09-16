@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="genericService" class="com.handicraft.service.impl.GenericServiceImpl">
+		<property name="genericDao" ref="genericDao" />
+	</bean>
+		
+	<bean id="mailService" class="com.handicraft.service.impl.MailerBizImpl">
+		<property name="mailManager" ref="mailManager" />
+	</bean>
+
+	<bean id="mailManager" class="com.reza.mail.MailManager">
+		<constructor-arg ref="taskExecutor" />
+	</bean>
+
+	<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+	  <property name="corePoolSize" value="5" />
+	  <property name="maxPoolSize" value="10" />
+	  <property name="queueCapacity" value="25" />
+	</bean>
+
+	<bean id="userBiz" class="com.handicraft.service.impl.UserBizImpl" parent="genericService">
+		<property name="mailerBiz" ref="mailService" />
+	</bean>
+	
+	<bean id="productCategoryService" class="com.handicraft.service.impl.ProductCategoryServiceImpl" parent="genericService">
+		<property name="productDao" ref="productDao" />
+	</bean>
+
+
+	<bean id="orderService" class="com.handicraft.service.impl.OrderServiceImpl" parent="genericService">
+		<property name="orderDao" ref="orderDao" />
+	</bean>
+	
+	<bean id="cartHelper" class="com.handicraft.util.CartHelper" >
+		<property name="orderService" ref="orderService" />
+	</bean>
+
+</beans>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!-- make sure the keys are unique -->
+
+<beans>	
+	<bean id="constant" class="com.reza.constant.Constant"	singleton="true">
+		<property name="constantValues">
+			<map>
+				<entry>
+					<key><value>MISSING_INSTALL_TYPE</value></key>
+					<value>Missing install type on : </value>
+				</entry>
+				<entry>
+					<key><value>LANGUAGE</value></key>
+					<value>lang</value>
+				</entry>
+				<entry>
+					<key><value>ENGLISH</value></key>
+					<value>en</value>
+				</entry>
+
+				<entry>
+					<key><value>REDIRECT_FRONT</value></key>
+					<value>redirect:/</value>
+				</entry>
+
+				<entry>
+					<key><value>MAX_LOGIN_ATTEMPT_COUNT</value></key>
+					<value>3</value>
+				</entry>
+
+<!-- Date Times zone names -->
+
+			</map>
+		</property>
+
+		<property name="constantCollections">
+<!-- New Feeds Collections -->
+			<map>
+				<entry>
+					<key><value>world</value></key>
+					<list>
+						<value>http://www.bbc.co.uk/persian/world/index.xml</value>
+					</list>
+				</entry>
+			</map>
+		</property>
+	</bean>
+</beans>

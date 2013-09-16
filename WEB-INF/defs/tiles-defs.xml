@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+  <definition name="indexPage" template="/WEB-INF/jsp/fix/layout.jsp">
+    <put-attribute name="title" value="Persian Handicrafts Online.com" />
+    <put-attribute name="header" value="/WEB-INF/jsp/fix/topSection.jsp" />
+    <put-attribute name="leftmenu" value="/WEB-INF/jsp/leftCol.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/indexCategoryList.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/jsp/fix/buttomSection.jsp" />
+  </definition>
+
+  <definition name="productsForCategoryPage" template="/WEB-INF/jsp/fix/layout.jsp">
+    <put-attribute name="title" value="List of Products" />
+    <put-attribute name="header" value="/WEB-INF/jsp/fix/topSection.jsp" />
+    <put-attribute name="leftmenu" value="/WEB-INF/jsp/leftCol.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/listProductsForCategory.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/jsp/fix/buttomSection.jsp" />
+  </definition>
+
+  <definition name="productPage" template="/WEB-INF/jsp/fix/layout.jsp">
+    <put-attribute name="title" value="Product Details" />
+    <put-attribute name="header" value="/WEB-INF/jsp/fix/topSection.jsp" />
+    <put-attribute name="leftmenu" value="/WEB-INF/jsp/leftCol.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/listProduct.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/jsp/fix/buttomSection.jsp" />
+  </definition>
+
+  <definition name="orderConfirmationPage" template="/WEB-INF/jsp/fix/layout.jsp">
+    <put-attribute name="title" value="Order Summary" />
+    <put-attribute name="header" value="/WEB-INF/jsp/fix/topSection.jsp" />
+    <put-attribute name="leftmenu" value="/WEB-INF/jsp/leftCol.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/orderConfirmation.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/jsp/fix/buttomSection.jsp" />
+  </definition>
+
+  <definition name="addressConfirmationPage" template="/WEB-INF/jsp/fix/layout.jsp">
+    <put-attribute name="title" value="Address Confirmation" />
+    <put-attribute name="header" value="/WEB-INF/jsp/fix/topSection.jsp" />
+    <put-attribute name="leftmenu" value="/WEB-INF/jsp/leftCol.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/addressConfirmation.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/jsp/fix/buttomSection.jsp" />
+  </definition>
+
+  <definition name="inquiryPage" template="/WEB-INF/jsp/fix/layout.jsp">
+    <put-attribute name="title" value="Persian Handicrafts Online.com | Contact Us" />
+    <put-attribute name="header" value="/WEB-INF/jsp/fix/topSection.jsp" />
+    <put-attribute name="leftmenu" value="/WEB-INF/jsp/leftCol.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/fix/inquiry.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/jsp/fix/buttomSection.jsp" />
+  </definition>
+
+
+  <definition name="aboutUsPage" template="/WEB-INF/jsp/fix/layout.jsp">
+    <put-attribute name="title" value="Persian Handicrafts Online.com | AboutS Us" />
+    <put-attribute name="header" value="/WEB-INF/jsp/fix/topSection.jsp" />
+    <put-attribute name="leftmenu" value="/WEB-INF/jsp/leftCol.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/fix/aboutUs.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/jsp/fix/buttomSection.jsp" />
+  </definition>
+  <definition name="tcPage" template="/WEB-INF/jsp/fix/layout.jsp">
+    <put-attribute name="title" value="Terms and Conditions" />
+    <put-attribute name="header" value="/WEB-INF/jsp/fix/topSection.jsp" />
+    <put-attribute name="leftmenu" value="/WEB-INF/jsp/leftCol.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/fix/tc.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/jsp/fix/buttomSection.jsp" />
+  </definition>
+
+  <definition name="inquirySuccessPage" template="/WEB-INF/jsp/fix/layout.jsp">
+    <put-attribute name="title" value="Contact Us" />
+    <put-attribute name="header" value="/WEB-INF/jsp/fix/topSection.jsp" />
+    <put-attribute name="leftmenu" value="/WEB-INF/jsp/leftCol.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/fix/inquirySuccess.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/jsp/fix/buttomSection.jsp" />
+  </definition>
+
+  <definition name="cartPage" template="/WEB-INF/jsp/fix/layout.jsp">
+    <put-attribute name="title" value="Shopping Cart" />
+    <put-attribute name="header" value="/WEB-INF/jsp/fix/topSection.jsp" />
+    <put-attribute name="leftmenu" value="/WEB-INF/jsp/leftCol.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/cart.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/jsp/fix/buttomSection.jsp" />
+  </definition>
+
+  <definition name="loginPage" template="/WEB-INF/jsp/fix/layout.jsp">
+    <put-attribute name="title" value="Persian Handicrafts Online.com | Login" />
+    <put-attribute name="header" value="/WEB-INF/jsp/fix/topSection.jsp" />
+    <put-attribute name="leftmenu" value="/WEB-INF/jsp/leftCol.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/login.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/jsp/fix/buttomSection.jsp" />
+  </definition>
+
+  <definition name="registerPage" template="/WEB-INF/jsp/fix/layout.jsp">
+    <put-attribute name="title" value="Register User" />
+    <put-attribute name="header" value="/WEB-INF/jsp/fix/topSection.jsp" />
+    <put-attribute name="leftmenu" value="/WEB-INF/jsp/leftCol.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/user/register.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/jsp/fix/buttomSection.jsp" />
+  </definition>
+
+  <definition name="userAccountPage" template="/WEB-INF/jsp/fix/layout.jsp">
+    <put-attribute name="title" value="User Account" />
+    <put-attribute name="header" value="/WEB-INF/jsp/fix/topSection.jsp" />
+    <put-attribute name="leftmenu" value="/WEB-INF/jsp/leftCol.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/user/userAccount.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/jsp/fix/buttomSection.jsp" />
+  </definition>
+
+  <definition name="changePassPage" template="/WEB-INF/jsp/fix/layout.jsp">
+    <put-attribute name="title" value="User Account" />
+    <put-attribute name="header" value="/WEB-INF/jsp/fix/topSection.jsp" />
+    <put-attribute name="leftmenu" value="/WEB-INF/jsp/leftCol.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/user/changePass.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/jsp/fix/buttomSection.jsp" />
+  </definition>
+  
+  <definition name="forgotPassPage" template="/WEB-INF/jsp/fix/layout.jsp">
+    <put-attribute name="title" value="User Account" />
+    <put-attribute name="header" value="/WEB-INF/jsp/fix/topSection.jsp" />
+    <put-attribute name="leftmenu" value="/WEB-INF/jsp/leftCol.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/user/forgotPass.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/jsp/fix/buttomSection.jsp" />
+  </definition>
+
+  <definition name="orderHistoryPage" template="/WEB-INF/jsp/fix/layout.jsp">
+    <put-attribute name="title" value="Order History" />
+    <put-attribute name="header" value="/WEB-INF/jsp/fix/topSection.jsp" />
+    <put-attribute name="leftmenu" value="/WEB-INF/jsp/leftCol.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/user/orderHistory.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/jsp/fix/buttomSection.jsp" />
+  </definition>
+
+  <definition name="paidOkPage" template="/WEB-INF/jsp/fix/layout.jsp">
+    <put-attribute name="title" value="Order History" />
+    <put-attribute name="header" value="/WEB-INF/jsp/fix/topSection.jsp" />
+    <put-attribute name="leftmenu" value="/WEB-INF/jsp/leftCol.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/user/paidOk.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/jsp/fix/buttomSection.jsp" />
+  </definition>
+
+  <definition name="notPaidPage" template="/WEB-INF/jsp/fix/layout.jsp">
+    <put-attribute name="title" value="Order History" />
+    <put-attribute name="header" value="/WEB-INF/jsp/fix/topSection.jsp" />
+    <put-attribute name="leftmenu" value="/WEB-INF/jsp/leftCol.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/user/notPaid.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/jsp/fix/buttomSection.jsp" />
+  </definition>
+
+
+
+<!-- admin -->
+
+  <definition name="managerPage" template="/WEB-INF/jsp/fix/layout.jsp">
+    <put-attribute name="title" value="Product Management" />
+    <put-attribute name="header" value="/WEB-INF/jsp/fix/topSection.jsp" />
+    <put-attribute name="leftmenu" value="/WEB-INF/jsp/leftCol.jsp" />
+    <put-attribute name="body" value="/secure/manager.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/jsp/fix/buttomSection.jsp" />
+  </definition>
+
+  <definition name="addProductPage" template="/WEB-INF/jsp/fix/layout.jsp">
+    <put-attribute name="title" value="Product Management" />
+    <put-attribute name="header" value="/WEB-INF/jsp/fix/topSection.jsp" />
+    <put-attribute name="leftmenu" value="/WEB-INF/jsp/leftCol.jsp" />
+    <put-attribute name="body" value="/secure/addProduct.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/jsp/fix/buttomSection.jsp" />
+  </definition>
+
+  <definition name="viewProductsPage" template="/WEB-INF/jsp/fix/layout.jsp">
+    <put-attribute name="title" value="Product Management" />
+    <put-attribute name="header" value="/WEB-INF/jsp/fix/topSection.jsp" />
+    <put-attribute name="leftmenu" value="/WEB-INF/jsp/leftCol.jsp" />
+    <put-attribute name="body" value="/secure/viewProducts.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/jsp/fix/buttomSection.jsp" />
+  </definition>
+
+  <definition name="addCategoryPage" template="/WEB-INF/jsp/fix/layout.jsp">
+    <put-attribute name="title" value="Category Management" />
+    <put-attribute name="header" value="/WEB-INF/jsp/fix/topSection.jsp" />
+    <put-attribute name="leftmenu" value="/WEB-INF/jsp/leftCol.jsp" />
+    <put-attribute name="body" value="/secure/addCategory.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/jsp/fix/buttomSection.jsp" />
+  </definition>
+
+  <definition name="viewCategoriesPage" template="/WEB-INF/jsp/fix/layout.jsp">
+    <put-attribute name="title" value="Category Management" />
+    <put-attribute name="header" value="/WEB-INF/jsp/fix/topSection.jsp" />
+    <put-attribute name="leftmenu" value="/WEB-INF/jsp/leftCol.jsp" />
+    <put-attribute name="body" value="/secure/viewCategories.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/jsp/fix/buttomSection.jsp" />
+  </definition>
+
+  <definition name="ordersPage" template="/WEB-INF/jsp/fix/layout.jsp">
+    <put-attribute name="title" value="Category Management" />
+    <put-attribute name="header" value="/WEB-INF/jsp/fix/topSection.jsp" />
+    <put-attribute name="leftmenu" value="/WEB-INF/jsp/leftCol.jsp" />
+    <put-attribute name="body" value="/secure/viewOrders.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/jsp/fix/buttomSection.jsp" />
+  </definition>
+
+  <definition name="changeOrderPage" template="/WEB-INF/jsp/fix/layout.jsp">
+    <put-attribute name="title" value="Category Management" />
+    <put-attribute name="header" value="/WEB-INF/jsp/fix/topSection.jsp" />
+    <put-attribute name="leftmenu" value="/WEB-INF/jsp/leftCol.jsp" />
+    <put-attribute name="body" value="/secure/changeOrder.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/jsp/fix/buttomSection.jsp" />
+  </definition>
+
+  <definition name="uploadPhotoPage" template="/WEB-INF/jsp/fix/layout.jsp">
+    <put-attribute name="title" value="Category Management" />
+    <put-attribute name="header" value="/WEB-INF/jsp/fix/topSection.jsp" />
+    <put-attribute name="leftmenu" value="/WEB-INF/jsp/leftCol.jsp" />
+    <put-attribute name="body" value="/secure/uploadPhoto.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/jsp/fix/buttomSection.jsp" />
+  </definition>
+
+  <definition name="viewPhotosPage" template="/WEB-INF/jsp/fix/layout.jsp">
+    <put-attribute name="title" value="Category Management" />
+    <put-attribute name="header" value="/WEB-INF/jsp/fix/topSection.jsp" />
+    <put-attribute name="leftmenu" value="/WEB-INF/jsp/leftCol.jsp" />
+    <put-attribute name="body" value="/secure/viewPhotos.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/jsp/fix/buttomSection.jsp" />
+  </definition>
+  <definition name="editPhotoPage" template="/WEB-INF/jsp/fix/layout.jsp">
+    <put-attribute name="title" value="Category Management" />
+    <put-attribute name="header" value="/WEB-INF/jsp/fix/topSection.jsp" />
+    <put-attribute name="leftmenu" value="/WEB-INF/jsp/leftCol.jsp" />
+    <put-attribute name="body" value="/secure/editPhoto.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/jsp/fix/buttomSection.jsp" />
+  </definition>
+
+</tiles-definitions>

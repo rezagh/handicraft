@@ -1,0 +1,29 @@
+<!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 3.0//EN" 
+"http://getahead.org/dwr//dwr30.dtd">
+
+<dwr>
+  <allow>
+    <create creator="new" javascript="JDate">
+      <param name="class" value="java.util.Date"/>
+    </create>
+    <create creator="new" javascript="DwrFrontController">
+      <param name="class" value="com.handicraft.controller.DwrFrontController"/>
+    </create>
+	
+	<convert converter="bean" match="com.handicraft.vo.*"/>
+	<convert converter="bean" match="com.handicraft.feed.*"/>
+	<convert converter="bean" match="com.handicraft.model.*"/>
+	<convert converter="bean" match="com.handicraft.dao.GenericDao"/>
+	
+  </allow>
+
+</dwr>
+<!-- 
+The DWR config file defines what classes DWR can create and remote for 
+use by Javascript. In the example above we are defining 2 classes that
+ are remoted and giving the classes names in Javascript.
+
+The new creator that we used above uses the public no-args constructor 
+that all JavaBeans must have. It is also worth remembering that DWR has
+ a few restrictions:
+ -->

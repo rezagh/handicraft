@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+
+<project name="handicraft" default="remote-copy-clean" basedir=".">  
+	<property name="remote-copy-stop-clean-start"
+	            location="/home/reza/java/apache-tomcat-6.0.20-handi/webapps/handicraft/remote-copy-stop-clean-start.sh"/>
+
+	<property name="remote-copy-clean"
+	            location="/home/reza/java/apache-tomcat-6.0.20-handi/webapps/handicraft/remote-copy-clean.sh"/>
+
+	 <path id="files-classpath">  
+	     <fileset dir="WEB-INF/lib" >  
+	         <include name="*.jar"/>  
+	     </fileset>  
+	 </path>      	
+	
+	<target name="clean">
+		 <delete dir="WEB-INF/classes/com"/>
+	</target>
+	
+    <target name="compile" depends="clean">
+        <mkdir dir="WEB-INF/classes"/>
+        
+    	<javac srcdir="src" destdir="WEB-INF/classes">
+    	         <classpath>  
+    	             <path refid="files-classpath" />  
+    	     </classpath>  
+    	</javac>  	
+
+    </target>
+
+	<target name="package-war" depends="compile">
+		<delete file="handicraft.war"/>  	
+		<jar destfile="handicraft.war" excludes="handicraft.war">
+			<fileset dir="." includes="**/*" 
+							 excludes="doco/** .settings/** src/** **\*.sh"/>
+							<!-- **\.* means every file starting with a dot -->
+		</jar>
+	</target>
+	
+	<target name="remote-copy-stop-clean-start" depends="package-war">
+		<exec executable="${remote-copy-stop-clean-start}">
+		</exec>
+	</target>	
+	<target name="remote-copy-clean" depends="package-war">
+		<exec executable="${remote-copy-clean}">
+		</exec>
+	</target>	
+
+</project> 

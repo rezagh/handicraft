@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="configLocation">
+			<value>WEB-INF/hibernate.cfg.xml</value>
+		</property>
+		<property name="configurationClass">
+			<value>org.hibernate.cfg.AnnotationConfiguration</value>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<prop key="hibernate.current_session_context_class">thread</prop>
+				
+	            <prop key="hibernate.format_sql">true</prop>
+	
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.jdbc.use_get_generated_keys">true</prop>
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<prop key="hibernate.cache.provider_class">net.sf.ehcache.hibernate.SingletonEhCacheProvider</prop>
+				<prop key="hibernate.generate_statistics">true</prop>
+				<prop key="hibernate.cache.region_prefix">handicraft</prop>
+				
+	
+				
+				<!-- prop key="net.sf.ehcache.configurationResourceName">ehcache.xml</prop-->
+				<prop key="net.sf.ehcache.configurationResourceName">../ehcache_handicraft.xml</prop>
+				
+	
+			</props>
+		</property>
+	</bean>
+
+	<bean id="genericDao" class="com.handicraft.dao.impl.GenericDaoImpl" lazy-init="false" >
+		<property name="sessionFactory">
+	    	<ref bean="sessionFactory"/>
+	  	</property>
+	</bean>
+	
+	<bean id="orderDao" class="com.handicraft.dao.impl.OrderDaoImpl" lazy-init="false" parent="genericDao" >
+		<property name="sessionFactory">
+	    	<ref bean="sessionFactory"/>
+	  	</property>
+	</bean>
+
+	<bean id="productDao" class="com.handicraft.dao.impl.ProductDaoImpl" lazy-init="false" parent="genericDao" >
+		<property name="sessionFactory">
+	    	<ref bean="sessionFactory"/>
+	  	</property>
+	</bean>
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost/handicraft" />
+		<property name="username" value="myhandicraftdb" />
+		<property name="password" value="Parsianbalast1" />
+	</bean>
+</beans>

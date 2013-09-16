@@ -1,0 +1,24 @@
+1- list categories page
+	- list of categories
+
+2- list products page
+	- list of products in a category
+
+3- product page
+	- no login: can change country and see postage
+
+
+4- cart page
+	no login: can select country to see postage
+
+
+5- address confirmation page
+	- no login: can still change country
+	- login: can go to profile and change the address
+
+
+6- order confirmation page
+	- read only
+	- 
+
+

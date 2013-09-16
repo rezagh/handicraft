@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<import resource="spring-dao-config.xml" />
+	<import resource="spring-dwr-config.xml"/>
+	<import resource="spring-constants-config.xml" />
+	<import resource="spring-service-config.xml" />
+	<import resource="spring-tiles-config.xml" />
+	
+
+<!-- apparently the hierarchy does not work in jsp -->
+	
+	<bean id="roleHierarchy" class="org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl">
+		<property name="hierarchy">
+			<value>
+                ROLE_ADMIN > ROLE_SUPER_USER
+                ROLE_SUPER_USER > ROLE_USER
+                ROLE_USER > ROLE_UNAUTHENTICATED
+            </value>
+        </property>
+	</bean>
+	
+	
+	
+	<bean id="roleHierarchyVoter" class="org.springframework.security.access.vote.RoleHierarchyVoter">
+		<constructor-arg ref="roleHierarchy"/>
+	</bean>
+
+<!-- bean id="accessDecisionManager" class="org.springframework.security.vote.UnanimousBased">
+	<property name="decisionVoters">
+		<list>
+		<ref local="roleHierarchyVoter"/>
+		</list>
+	</property>
+</bean-->
+
+	<!-- bean id="authenticationManager" class="org.springframework.security.providers.ProviderManager">
+		<property name="providers">
+			<list>
+				<ref local="daoAuthenticationProvider"/>
+			</list>
+		</property>
+	</bean-->
+
+	<!--  bean id="daoAuthenticationProvider" class="com.handicraft.dao.impl.CustomDaoAuthenticationProvider">
+		
+		<property name="userDetailsService" ref="userBiz"/>
+	</bean-->
+
+</beans>
